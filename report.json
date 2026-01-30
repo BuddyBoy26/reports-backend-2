@@ -1,0 +1,218 @@
+{
+    "company": "Export",
+    "reportName": "Claim Report - CLM20250068",
+    "colors": {
+        "primary": "#0F172A",
+        "accent": "#2563EB",
+        "text": "#111827",
+        "muted": "#6B7280",
+        "border": "#E5E7EB"
+    },
+    "assets": {
+        "backgroundImage": "https://ik.imagekit.io/pritvik/Reports%20-%20generic%20bg.png"
+    },
+    "configs": {
+        "page": {
+            "size": "A4",
+            "orientation": "portrait",
+            "margin": "18mm"
+        },
+        "font": {
+            "family": "Arial",
+            "base": "text-[11pt]",
+            "leading": "leading-relaxed"
+        },
+        "header": {
+            "visible": false,
+            "align": "right",
+            "repeat": "all"
+        },
+        "footer": {
+            "visible": true,
+            "align": "right",
+            "text": "Page {{page}} of {{pages}}"
+        },
+        "date": {
+            "align": "right",
+            "format": "DD MMM YYYY"
+        },
+        "table": {
+            "border": "border border-slate-700",
+            "striped": true,
+            "compact": true,
+            "headerBg": "bg-[#007181] text-white"
+        }
+    },
+    "components": [
+        {
+            "type": "header",
+            "props": {
+                "text": "Claim Report"
+            }
+        },
+        {
+            "type": "header",
+            "style": {
+                "wrapper": "px-0 py-2",
+                "title": "text-3xl font-extrabold tracking-wide text-black center"
+            },
+            "props": {
+                "text": "SURVEY REPORT"
+            }
+        },
+        {
+            "type": "para",
+            "style": {
+                "wrapper": "pb-2",
+                "text": "text-[11pt] text-black leading-snug"
+            },
+            "props": {
+                "text": "This report is issued without prejudice, as a proof of the nature, extent and assessment of the damage and the settlement of same depends, upon the terms and condition of the contract of insurance but does not necessarily imply that loss is recoverable from insurers."
+            }
+        },
+        {
+            "type": "subheader",
+            "props": {
+                "text": "Claim Overview"
+            }
+        },
+        {
+            "type": "table",
+            "props": {
+                "title": "",
+                "headers": [
+                    "Field",
+                    "Value"
+                ],
+                "rows": [
+                    [
+                        " Claim  Number",
+                        "CLM20250068"
+                    ],
+                    [
+                        " Policy  Type",
+                        "Export"
+                    ],
+                    [
+                        " Status",
+                        "pending"
+                    ],
+                    [
+                        " Date  Created",
+                        "Oct 15, 2025"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "subheader",
+            "props": {
+                "text": "Policy Details"
+            }
+        },
+        {
+            "type": "table",
+            "props": {
+                "title": "",
+                "headers": [
+                    "Field",
+                    "Value"
+                ],
+                "rows": [
+                    [
+                        " Registration id",
+                        "123"
+                    ],
+                    [
+                        " Insured name",
+                        "Sam"
+                    ],
+                    [
+                        " Insurer",
+                        "adas"
+                    ],
+                    [
+                        " Assigned surveyor",
+                        "Ashley Garcia"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "subheader",
+            "props": {
+                "text": "Section 1 - Basic Information"
+            }
+        },
+        {
+            "type": "table",
+            "props": {
+                "title": "",
+                "headers": [
+                    "Field",
+                    "Value"
+                ],
+                "rows": [
+                    [
+                        " Name of  Consigner of  Goods ( Exporter)",
+                        "NUTRINOVA GERMANY GMBH"
+                    ],
+                    [
+                        " Name of  Consignee of  Goods ( Importer)",
+                        "COCA COLA INDIA PRIVATE LIMITED"
+                    ],
+                    [
+                        " Name of  C H A /  Clearing  Agent /  Forwarder",
+                        "PHALNA SHIPPING AGENCIES PVT L"
+                    ],
+                    [
+                        " Invoice  Details  Invoice  No",
+                        "979729260"
+                    ],
+                    [
+                        " Invoice  Details  Invoice  Date",
+                        "24-03-2025"
+                    ],
+                    [
+                        " Invoice  Details  Invoice  Value",
+                        "19850.00"
+                    ],
+                    [
+                        " Invoice  Details  No of  P K G",
+                        "2"
+                    ],
+                    [
+                        " Invoice  Details  Gross  W T",
+                        "1045.000"
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "subheader",
+            "props": {
+                "text": "Supporting Documents"
+            }
+        },
+        {
+            "type": "table",
+            "props": {
+                "title": "",
+                "headers": [
+                    "File",
+                    "Details"
+                ],
+                "rows": [
+                    [
+                        "— Bill of Entry —",
+                        ""
+                    ],
+                    [
+                        "121 BOE.pdf",
+                        "application/pdf • 6.86 KB • Uploaded Oct 15, 2025"
+                    ]
+                ]
+            }
+        }
+    ]
+}
