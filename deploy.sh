@@ -34,14 +34,13 @@ aws ecr get-login-password --region "$REGION" \
 # ─────────────────────────────────────────────
 echo "🐳 Building Docker image..."
 docker build -t "$REPO_NAME" \
-  --build-arg GEMINI_API_KEY="$(grep GEMINI_API_KEY .env | cut -d '=' -f2)" \
-  --build-arg SUPABASE_URL="$(grep SUPABASE_URL .env | cut -d '=' -f2)" \
-  --build-arg SUPABASE_SERVICE_KEY="$(grep SUPABASE_SERVICE_KEY .env | cut -d '=' -f2)" \
-  --build-arg AWS_ACCESS_KEY_ID="$(grep AWS_ACCESS_KEY_ID .env | cut -d '=' -f2)" \
-  --build-arg AWS_SECRET_ACCESS_KEY="$(grep AWS_SECRET_ACCESS_KEY .env | cut -d '=' -f2)" \
-  --build-arg AWS_REGION="$(grep AWS_REGION .env | cut -d '=' -f2)" \
-  --build-arg AWS_S3_BUCKET="$(grep AWS_S3_BUCKET .env | cut -d '=' -f2)" \
-  .
+  # --build-arg GEMINI_API_KEY="$(grep GEMINI_API_KEY .env | cut -d '=' -f2)" \
+  # --build-arg SUPABASE_URL="$(grep SUPABASE_URL .env | cut -d '=' -f2)" \
+  # --build-arg SUPABASE_SERVICE_KEY="$(grep SUPABASE_SERVICE_KEY .env | cut -d '=' -f2)" \
+  # --build-arg AWS_ACCESS_KEY_ID="$(grep AWS_ACCESS_KEY_ID .env | cut -d '=' -f2)" \
+  # --build-arg AWS_SECRET_ACCESS_KEY="$(grep AWS_SECRET_ACCESS_KEY .env | cut -d '=' -f2)" \
+  # --build-arg AWS_REGION="$(grep AWS_REGION .env | cut -d '=' -f2)" \
+  # --build-arg AWS_S3_BUCKET="$(grep AWS_S3_BUCKET .env | cut -d '=' -f2)" \
 
 # ─────────────────────────────────────────────
 # STEP 4.1: Verify environment variables
