@@ -8,7 +8,7 @@ env:
   AWS_REGION: ap-south-1
   ECR_REPO: express-lambda
   ACCOUNT_ID: 683918607585
-  LAMBDA_FUNCTION_NAME: express-lambda
+  LAMBDA_FUNCTION_NAME: reports-backend-docker
 
 jobs:
   deploy:
