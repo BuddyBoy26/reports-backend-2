@@ -113,28 +113,28 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
 
   const body = (p.rows || [])
     .map((row: any[], i: number) => {
-      const bg = i % 2 === 1 ? "#f8fafc" : "#ffffff";
+      const bg = "transparent";
       if (row.length >= 2) {
         return `<tr style="background:${bg};">
           <td style="
             padding: 2px 6px;
-            border: 1px solid #94a3b8;
+            border: 1px solid #000000;
             border-right: none;
             font-weight: 700;
             font-size: 10px;
-            color: #1e293b;
+            color: #000000;
             white-space: nowrap;
             width: 1%;
             vertical-align: top;
           ">${esc(row[0])}</td>
           <td style="
             padding: 2px 6px;
-            border-left: 2px solid #475569;
-            border-top: 1px solid #94a3b8;
-            border-right: 1px solid #94a3b8;
-            border-bottom: 1px solid #94a3b8;
+            border-left: 2px solid #000000;
+            border-top: 1px solid #000000;
+            border-right: 1px solid #000000;
+            border-bottom: 1px solid #000000;
             font-size: 10px;
-            color: #334155;
+            color: #000000;
             vertical-align: top;
           ">${esc(row[1])}</td>
         </tr>`;
@@ -142,9 +142,9 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
       const tds = row.map((c: any) =>
         `<td style="
           padding: 2px 6px;
-          border: 1px solid #94a3b8;
+          border: 1px solid #000000;
           font-size: 10px;
-          color: #334155;
+          color: #000000;
           vertical-align: top;
         ">${esc(c)}</td>`
       ).join("");
