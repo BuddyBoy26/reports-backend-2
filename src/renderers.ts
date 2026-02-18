@@ -124,7 +124,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
             font-size: 12px;
             color: #000000;
             white-space: nowrap;
-            width: 1%;
+            width: 25%;
             vertical-align: top;
           ">${esc(row[0])}</td>
           <td style="
