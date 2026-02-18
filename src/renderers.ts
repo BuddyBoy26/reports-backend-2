@@ -111,40 +111,39 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
       ">${esc(p.title)}</div>`
     : "";
 
-  // Detect if this is a 2-column key-value table (headers are ["Field","Value"] or hidden)
-  const isKeyValue = !p.headers || p.headers.length === 0 || 
-    (p.headers.length === 2 && 
-     ['field','key','label','name'].includes((p.headers[0]||'').toLowerCase()) &&
-     ['value','val'].includes((p.headers[1]||'').toLowerCase()));
-
   const body = (p.rows || [])
     .map((row: any[], i: number) => {
-      const bg = !isKeyValue && cfg.table.striped && i % 2 === 1 ? "#f8fafc" : "#ffffff";
-      if (isKeyValue && row.length >= 2) {
+      const bg = i % 2 === 1 ? "#f8fafc" : "#ffffff";
+      if (row.length >= 2) {
         return `<tr style="background:${bg};">
           <td style="
-            padding: 4px 8px;
+            padding: 2px 6px;
             border: 1px solid #94a3b8;
-            font-weight: 600;
-            font-size: 10.5px;
+            border-right: none;
+            font-weight: 700;
+            font-size: 10px;
             color: #1e293b;
-            width: 40%;
+            white-space: nowrap;
+            width: 1%;
             vertical-align: top;
           ">${esc(row[0])}</td>
           <td style="
-            padding: 4px 8px;
-            border: 1px solid #94a3b8;
-            font-size: 10.5px;
+            padding: 2px 6px;
+            border-left: 2px solid #475569;
+            border-top: 1px solid #94a3b8;
+            border-right: 1px solid #94a3b8;
+            border-bottom: 1px solid #94a3b8;
+            font-size: 10px;
             color: #334155;
             vertical-align: top;
           ">${esc(row[1])}</td>
         </tr>`;
       }
-      const tds = row.map((c: any) => 
+      const tds = row.map((c: any) =>
         `<td style="
-          padding: 4px 8px;
+          padding: 2px 6px;
           border: 1px solid #94a3b8;
-          font-size: 10.5px;
+          font-size: 10px;
           color: #334155;
           vertical-align: top;
         ">${esc(c)}</td>`
@@ -152,21 +151,6 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
       return `<tr style="background:${bg};">${tds}</tr>`;
     })
     .join("");
-
-  // Only show headers if not key-value style
-  const thead = (!isKeyValue && p.headers && p.headers.length > 0)
-    ? `<thead><tr>${(p.headers as string[]).map(h => 
-        `<th style="
-          padding: 5px 8px;
-          border: 1px solid #94a3b8;
-          background: #334155;
-          color: #ffffff;
-          font-size: 10.5px;
-          font-weight: 600;
-          text-align: left;
-        ">${esc(h)}</th>`
-      ).join("")}</tr></thead>`
-    : "";
 
   const notes = p.notes
     ? `<div style="margin-top:4px;font-size:10px;color:#64748b;">${esc(p.notes)}</div>`
@@ -181,7 +165,6 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
       border-collapse: collapse;
       font-family: inherit;
     ">
-      ${thead}
       <tbody>${body}</tbody>
     </table>
   </div>
