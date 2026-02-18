@@ -98,50 +98,90 @@ const footerTextBlock = (p: any, s: any) => `
 
 const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
   const title = p.title
-    ? `<div class="${tw(
-        "mb-2 font-semibold text-slate-800",
-        s?.title
-      )}">${esc(p.title)}</div>`
+    ? `<div style="
+        font-weight: 700;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: #1e293b;
+        background: #e2e8f0;
+        padding: 5px 8px;
+        border: 1px solid #94a3b8;
+        border-bottom: none;
+      ">${esc(p.title)}</div>`
     : "";
-  const compact = cfg.table.compact ? "py-1 px-2 text-sm" : "py-2 px-3";
-  const theadClass = tw(s?.thead, cfg.table.headerBg);
-  const thead = (p.headers || [])
-    .map(
-      (h: string) =>
-        `<th class="${compact} border-b font-semibold text-left" style="border-color:${col.border}">${esc(
-          h
-        )}</th>`
-    )
-    .join("");
+
+  // Detect if this is a 2-column key-value table (headers are ["Field","Value"] or hidden)
+  const isKeyValue = !p.headers || p.headers.length === 0 || 
+    (p.headers.length === 2 && 
+     ['field','key','label','name'].includes((p.headers[0]||'').toLowerCase()) &&
+     ['value','val'].includes((p.headers[1]||'').toLowerCase()));
+
   const body = (p.rows || [])
     .map((row: any[], i: number) => {
-      const bg = cfg.table.striped && i % 2 === 1 ? "bg-gray-100" : "bg-white";
-      const tds = row
-        .map(
-          (c: any) =>
-            `<td class="${compact} border-b" style="border-color:${col.border}">${esc(
-              c
-            )}</td>`
-        )
-        .join("");
-      return `<tr class="${bg}">${tds}</tr>`;
+      const bg = !isKeyValue && cfg.table.striped && i % 2 === 1 ? "#f8fafc" : "#ffffff";
+      if (isKeyValue && row.length >= 2) {
+        return `<tr style="background:${bg};">
+          <td style="
+            padding: 4px 8px;
+            border: 1px solid #94a3b8;
+            font-weight: 600;
+            font-size: 10.5px;
+            color: #1e293b;
+            width: 40%;
+            vertical-align: top;
+          ">${esc(row[0])}</td>
+          <td style="
+            padding: 4px 8px;
+            border: 1px solid #94a3b8;
+            font-size: 10.5px;
+            color: #334155;
+            vertical-align: top;
+          ">${esc(row[1])}</td>
+        </tr>`;
+      }
+      const tds = row.map((c: any) => 
+        `<td style="
+          padding: 4px 8px;
+          border: 1px solid #94a3b8;
+          font-size: 10.5px;
+          color: #334155;
+          vertical-align: top;
+        ">${esc(c)}</td>`
+      ).join("");
+      return `<tr style="background:${bg};">${tds}</tr>`;
     })
     .join("");
+
+  // Only show headers if not key-value style
+  const thead = (!isKeyValue && p.headers && p.headers.length > 0)
+    ? `<thead><tr>${(p.headers as string[]).map(h => 
+        `<th style="
+          padding: 5px 8px;
+          border: 1px solid #94a3b8;
+          background: #334155;
+          color: #ffffff;
+          font-size: 10.5px;
+          font-weight: 600;
+          text-align: left;
+        ">${esc(h)}</th>`
+      ).join("")}</tr></thead>`
+    : "";
+
   const notes = p.notes
-    ? `<div class="mt-2 text-xs text-slate-500">${esc(p.notes)}</div>`
+    ? `<div style="margin-top:4px;font-size:10px;color:#64748b;">${esc(p.notes)}</div>`
     : "";
 
   return `
-<section class="${tw("my-4", s?.wrapper)}">
+<section style="margin: 8px 0;">
   ${title}
-  <div class="${tw("tbl-wrap overflow-x-auto", s?.container)}">
-    <table class="${tw(
-      "tbl w-full border-collapse",
-      cfg.table.border
-    )}" style="border-color:${col.border}">
-      <thead class="${theadClass}">
-        ${thead ? `<tr>${thead}</tr>` : ""}
-      </thead>
+  <div style="overflow-x:auto;">
+    <table style="
+      width: 100%;
+      border-collapse: collapse;
+      font-family: inherit;
+    ">
+      ${thead}
       <tbody>${body}</tbody>
     </table>
   </div>
