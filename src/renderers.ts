@@ -121,7 +121,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
             border: 1px solid #000000;
             border-right: none;
             font-weight: 700;
-            font-size: 10px;
+            font-size: 12px;
             color: #000000;
             white-space: nowrap;
             width: 1%;
@@ -133,7 +133,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
             border-top: 1px solid #000000;
             border-right: 1px solid #000000;
             border-bottom: 1px solid #000000;
-            font-size: 10px;
+            font-size: 12px;
             color: #000000;
             vertical-align: top;
           ">${esc(row[1])}</td>
