@@ -415,14 +415,14 @@ app.post("/extract-selective-fields", async (req, res) => {
     
 
     // Extract using Gemini with ONLY the specified fields
-    const extractedData = await geminiExtractor.extractSelectiveFields(
+    const timeoutPromise = new Promise((_, reject) => 
+      setTimeout(() => reject(new Error('Extraction timeout after 45 seconds. Try reducing the number of fields.')), 45000)
+    );
+
+    const extractionPromise = geminiExtractor.extractSelectiveFields(
       processedDoc.text,
       fieldsToExtract,
       documentType
-    );
-    
-    const timeoutPromise = new Promise((_, reject) => 
-      setTimeout(() => reject(new Error('Extraction timeout after 45 seconds. Try reducing the number of fields.')), 45000)
     );
     
     const extractedData = await Promise.race([extractionPromise, timeoutPromise]) as Record<string, any>;
