@@ -22,8 +22,10 @@ WORKDIR ${LAMBDA_TASK_ROOT}
 # Copy and build your app
 # ──────────────────────────────────────────────
 COPY package*.json ./
-RUN npm ci --omit=dev
-COPY dist/ ./dist
+RUN npm ci
+COPY . .
+RUN npm run build
+RUN npm prune --omit=dev
 
 # ──────────────────────────────────────────────
 # Environment Variables (from build args)
