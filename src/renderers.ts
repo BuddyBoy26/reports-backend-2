@@ -33,12 +33,12 @@ const dateFmt = (iso?: string) => {
 /* ---------- Block renderers ---------- */
 const headerBlock = (p: any, s: any) => `
 <section class="${tw("mb-3", s?.wrapper)}">
-  <h1 class="${tw("text-2xl font-bold text-slate-800", s?.title)}">${esc(p.text)}</h1>
+  <h1 class="${tw("text-xl font-bold text-slate-800", s?.title)}">${esc(p.text)}</h1>
 </section>`;
 
 const subheaderBlock = (p: any, s: any) => `
 <section class="${tw("mb-2", s?.wrapper)}">
-  <h2 class="${tw("text-xl font-semibold text-slate-700", s?.title)}">${esc(p.text)}</h2>
+  <h2 class="${tw("text-lg font-semibold text-slate-700", s?.title)}">${esc(p.text)}</h2>
 </section>`;
 
 const dateBlock = (p: any, s: any, cfg: Cfg) => `
@@ -100,7 +100,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
   const title = p.title
     ? `<div style="
         font-weight: 700;
-        font-size: 11px;
+        font-size: 10px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: #1e293b;
@@ -121,7 +121,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
             border: 1px solid #000000;
             border-right: none;
             font-weight: 700;
-            font-size: 12px;
+            font-size: 11px;
             color: #000000;
             white-space: nowrap;
             width: 25%;
@@ -133,7 +133,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
             border-top: 1px solid #000000;
             border-right: 1px solid #000000;
             border-bottom: 1px solid #000000;
-            font-size: 12px;
+            font-size: 11px;
             color: #000000;
             vertical-align: top;
           ">${esc(row[1])}</td>
@@ -143,7 +143,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
         `<td style="
           padding: 2px 6px;
           border: 1px solid #000000;
-          font-size: 10px;
+          font-size: 9px;
           color: #000000;
           vertical-align: top;
         ">${esc(c)}</td>`
@@ -361,7 +361,7 @@ export const renderBody = (r: Report) => {
     : "";
 
   /* First page spacer - only renders once at the top */
-  const firstPageSpacer = `<div class="first-page-spacer" style="height: 36mm;"></div>`;
+  const firstPageSpacer = `<div class="first-page-spacer" style="height: 24mm;"></div>`;
 
   const main = `
 <main class="prose max-w-none text-[0] body-wrap">
@@ -451,7 +451,7 @@ body{
 .body-wrap{
   padding:var(--page-margin);
   padding-top:calc(var(--header-h) + var(--page-margin));
-  padding-bottom:calc(var(--footer-h) + var(--page-margin));
+  padding-bottom:calc(var(--footer-h) + 8mm);
   box-decoration-break:clone;
   -webkit-box-decoration-break:clone;
 }
