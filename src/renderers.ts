@@ -52,7 +52,7 @@ const dateBlock = (p: any, s: any, cfg: Cfg) => `
 
 const paraBlock = (p: any, s: any) => `
 <section class="${tw("mb-3", s?.wrapper)}">
-  <p class="${tw("text-justify", s?.text)}">${esc(p.text)}</p>
+  <p class="${tw("text-justify text-xs", s?.text)}">${esc(p.text)}</p>
 </section>`;
 
 const dividerBlock = (col: Col, s: any) => `
@@ -100,12 +100,12 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
   const title = p.title
     ? `<div style="
         font-weight: 700;
-        font-size: 10px;
+        font-size: 9px;
         text-transform: uppercase;
         letter-spacing: 0.05em;
         color: #1e293b;
         background: #e2e8f0;
-        padding: 5px 8px;
+        padding: 4px 8px;
         border: 1px solid #94a3b8;
         border-bottom: none;
       ">${esc(p.title)}</div>`
@@ -121,7 +121,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
             border: 1px solid #000000;
             border-right: none;
             font-weight: 700;
-            font-size: 11px;
+            font-size: 10px;
             color: #000000;
             white-space: nowrap;
             width: 25%;
@@ -133,7 +133,7 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
             border-top: 1px solid #000000;
             border-right: 1px solid #000000;
             border-bottom: 1px solid #000000;
-            font-size: 11px;
+            font-size: 10px;
             color: #000000;
             vertical-align: top;
           ">${esc(row[1])}</td>
@@ -153,11 +153,11 @@ const tableBlock = (p: any, s: any, cfg: Cfg, col: Col) => {
     .join("");
 
   const notes = p.notes
-    ? `<div style="margin-top:4px;font-size:10px;color:#64748b;">${esc(p.notes)}</div>`
+    ? `<div style="margin-top:3px;font-size:10px;color:#64748b;">${esc(p.notes)}</div>`
     : "";
 
   return `
-<section style="margin: 8px 0;">
+<section style="margin: 6px 0;">
   ${title}
   <div style="overflow-x:auto;">
     <table style="
@@ -452,6 +452,7 @@ body{
   padding:var(--page-margin);
   padding-top:calc(var(--header-h) + var(--page-margin));
   padding-bottom:calc(var(--footer-h) + 8mm);
+
   box-decoration-break:clone;
   -webkit-box-decoration-break:clone;
 }
